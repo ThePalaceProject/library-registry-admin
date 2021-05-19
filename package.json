@@ -1,5 +1,5 @@
 {
-  "name": "@thepalaceproject/registry-admin",
+  "name": "@thepalaceproject/library-registry-admin",
   "description": "Admin Interface for The Palace Project Library Registry",
   "repository": {
     "type": "git",
