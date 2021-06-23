@@ -1,5 +1,14 @@
 src/*
+tests/*
 lib/*
 typings/*
 *~
 docs
+
+# github
+.github
+
+.sass-lint.yml
+/*.json
+/webpack.*.js
+/.*
