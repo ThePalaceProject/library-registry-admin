@@ -3,25 +3,19 @@
 [![Test](https://github.com/ThePalaceProject/library-registry-admin/actions/workflows/test.yml/badge.svg)](https://github.com/ThePalaceProject/library-registry-admin/actions/workflows/test.yml)
 [![npm version](https://badge.fury.io/js/%40thepalaceproject%2Flibrary-registry-admin.svg)](https://badge.fury.io/js/%40thepalaceproject%2Flibrary-registry-admin)
 [![Deploy Documentation](https://github.com/ThePalaceProject/library-registry-admin/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/ThePalaceProject/library-registry-admin/actions/workflows/gh-pages.yml)
+[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/@thepalaceproject/library-registry-admin/badge)](https://www.jsdelivr.com/package/npm/@thepalaceproject/library-registry-admin)
 
-This is a [LYRASIS](http://lyrasis.org)-maintained fork of the NYPL [Library Simplified](http://www.librarysimplified.org/) Library Registry administrative interface.
-
-## Library Simplified Documentation
-
-To see screenshots, read in-depth documentation, and find out more about the project, check out the [Confluence](https://confluence.nypl.org/display/SIM/) site hosted by The New York Public Library.
+This is a fork of the NYPL [Library Simplified](http://www.librarysimplified.org/) Library Registry administrative interface maintained and updated for the Palace Project.
 
 ## Setup
 
 This package is meant to be used with The Palace Project [Library Registry](https://github.com/thepalaceproject/library-registry).
 
-#### Use npm version
+### Production - CDN
 
-Suggested local folder setup:
-- `/[path to project folder]/library-registry`
+The published version of this interface is into the library registry automatically using the jsDelivr CDN.
 
-To use the published version with your circulation manager, run `npm install` from the `library-registry` locally installed repository.
-
-#### Use local development version
+### Local development
 
 Suggested local folder setup:
 - `/[path to project folder]/library-registry`
@@ -29,19 +23,19 @@ Suggested local folder setup:
 
 If you're working on the administrative interface and want to test local changes, you can link your local clone of this repository to your local library registry. These steps will allow you to work on the front-end administrative interface and see updates while developing.
 
-1. Run `npm link` in this `library-registry-admin` repository,
-2. run `npm link library-registry-admin` from the `library-registry` repository,
-2. run the library registry using `python app.py` at the root in the `library-registry` repository,
-3. run the web interface using `npm run dev` at the root of this `library-registry-admin` repository,
-4. visit `localhost:7000/admin/`
+1. Run `npm link` in this `library-registry-admin` repository
+2. run `npm link @thepalaceproject/library-registry-admin` from the `admin` folder in the `library-registry` repository
+3. run the library registry using `python app.py` at the root in the `library-registry` repository
+4. run the web interface using `npm run dev` at the root of this `library-registry-admin` repository
+5. visit `localhost:7000/admin/`
 
 Webpack will take care of compiling and updating any new changes made locally for development. Just refresh the page to see updates without having to restart either the `library-registry` or `library-registry-admin` servers.
 
 ## Publishing
 
-<!-- This package is [published to npm](https://www.npmjs.com/package/@thepalaceproject/library-registry-admin). -->
+This package is [published to npm](https://www.npmjs.com/package/@thepalaceproject/library-registry-admin).
 
-We use GitHub Actions for publishing. This package is published automatically when a new release is created.
+We use GitHub Actions for publishing. This package is published automatically when a new release is created in this github repository. This CI process should be used for all releases. Releases should not be manually published to NPM.
 
 ## Accessibility
 
@@ -56,21 +50,3 @@ Like the codebase, all the unit tests are written in Typescript. Tests are writt
 To run the tests, perform `npm test`.
 
 We use GitHub Actions for continuous integration. Any pull requests submitted must have tests and those tests must pass during the CI checks.
-
-## License
-
-```
-Copyright © 2015 The New York Public Library, Astor, Lenox, and Tilden Foundations
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-```
