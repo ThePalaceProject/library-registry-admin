@@ -66,6 +66,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A color-coded panel displayed for each item in LibraryList, containing a LibraryDetailPage.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-type-parameters">
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
@@ -124,6 +131,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="librarieslistitem.html#content" class="tsd-kind-icon">content</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="librarieslistitem.html#forceupdate" class="tsd-kind-icon">force<wbr>Update</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="librarieslistitem.html#getsnapshotbeforeupdate" class="tsd-kind-icon">get<wbr>Snapshot<wbr>Before<wbr>Update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="librarieslistitem.html#handlelibrarypanelclick" class="tsd-kind-icon">handle<wbr>Library<wbr>Panel<wbr>Click</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="librarieslistitem.html#render" class="tsd-kind-icon">render</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="librarieslistitem.html#setstate" class="tsd-kind-icon">set<wbr>State</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="librarieslistitem.html#shouldcomponentupdate" class="tsd-kind-icon">should<wbr>Component<wbr>Update</a></li>
@@ -146,7 +154,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides Component.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ThePalaceProject/library-registry-admin/blob/82f55b7/src/components/LibrariesListItem.tsx#L17">src/components/LibrariesListItem.tsx:17</a></li>
+									<li>Defined in <a href="https://github.com/ThePalaceProject/library-registry-admin/blob/2f32901/src/components/LibrariesListItem.tsx#L22">src/components/LibrariesListItem.tsx:22</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -420,9 +428,16 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ThePalaceProject/library-registry-admin/blob/82f55b7/src/components/LibrariesListItem.tsx#L42">src/components/LibrariesListItem.tsx:42</a></li>
+									<li>Defined in <a href="https://github.com/ThePalaceProject/library-registry-admin/blob/2f32901/src/components/LibrariesListItem.tsx#L68">src/components/LibrariesListItem.tsx:68</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>If both library_stage and registry_stage are in production, background is green;
+										if at least one of them is cancelled, background is red;
+									otherwise, background is yellow.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -693,7 +708,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ThePalaceProject/library-registry-admin/blob/82f55b7/src/components/LibrariesListItem.tsx#L27">src/components/LibrariesListItem.tsx:27</a></li>
+									<li>Defined in <a href="https://github.com/ThePalaceProject/library-registry-admin/blob/2f32901/src/components/LibrariesListItem.tsx#L44">src/components/LibrariesListItem.tsx:44</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -775,6 +790,29 @@ class Foo extends React.Component {
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="handlelibrarypanelclick" class="tsd-anchor"></a>
+					<h3>handle<wbr>Library<wbr>Panel<wbr>Click</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">handle<wbr>Library<wbr>Panel<wbr>Click<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ThePalaceProject/library-registry-admin/blob/2f32901/src/components/LibrariesListItem.tsx#L37">src/components/LibrariesListItem.tsx:37</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This function sets the state of the LibrariesListItem component to open or close,
+									which in turn tells the Panel component whether to render its content or not.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 					<a name="render" class="tsd-anchor"></a>
 					<h3>render</h3>
@@ -786,7 +824,7 @@ class Foo extends React.Component {
 							<aside class="tsd-sources">
 								<p>Overrides Component.render</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ThePalaceProject/library-registry-admin/blob/82f55b7/src/components/LibrariesListItem.tsx#L54">src/components/LibrariesListItem.tsx:54</a></li>
+									<li>Defined in <a href="https://github.com/ThePalaceProject/library-registry-admin/blob/2f32901/src/components/LibrariesListItem.tsx#L77">src/components/LibrariesListItem.tsx:77</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -888,9 +926,15 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ThePalaceProject/library-registry-admin/blob/82f55b7/src/components/LibrariesListItem.tsx#L37">src/components/LibrariesListItem.tsx:37</a></li>
+									<li>Defined in <a href="https://github.com/ThePalaceProject/library-registry-admin/blob/2f32901/src/components/LibrariesListItem.tsx#L58">src/components/LibrariesListItem.tsx:58</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Passed as a callback to the child LibraryDetailPage component, so that the LibrariesListItem
+									background color will update to reflect changes to the library&#39;s stages.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -977,6 +1021,9 @@ class Foo extends React.Component {
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="librarieslistitem.html#getsnapshotbeforeupdate" class="tsd-kind-icon">get<wbr>Snapshot<wbr>Before<wbr>Update</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="librarieslistitem.html#handlelibrarypanelclick" class="tsd-kind-icon">handle<wbr>Library<wbr>Panel<wbr>Click</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 								<a href="librarieslistitem.html#render" class="tsd-kind-icon">render</a>
