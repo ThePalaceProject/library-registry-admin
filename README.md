@@ -14,6 +14,8 @@ To see screenshots, read in-depth documentation, and find out more about the pro
 
 This package is meant to be used with The Palace Project [Library Registry](https://github.com/thepalaceproject/library-registry).
 
+Version 12 (or greater) of Node.js is required.
+
 ### Cloning this repository
 
 Suggested local folder setup:
