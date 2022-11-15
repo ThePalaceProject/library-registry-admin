@@ -79,6 +79,7 @@
 					<h2>Setup</h2>
 				</a>
 				<p>This package is meant to be used with The Palace Project <a href="https://github.com/thepalaceproject/library-registry">Library Registry</a>.</p>
+				<p>Node.js version 12 (or greater) is required.</p>
 				<a href="#cloning-this-repository" id="cloning-this-repository" style="color: inherit; text-decoration: none;">
 					<h3>Cloning this repository</h3>
 				</a>
@@ -87,7 +88,17 @@
 					<li><code>/[path to project folder]/library-registry</code></li>
 					<li><code>/[path to project folder]/library-registry-admin</code></li>
 				</ul>
-				<p>If you&#39;re working on the administrative interface and want to test local changes, you can link your local clone of this repository to your local library registry. These steps will allow you to work on the front-end administrative interface and see updates while developing.</p>
+				<a href="#running-with-a-remote-registry-server" id="running-with-a-remote-registry-server" style="color: inherit; text-decoration: none;">
+					<h3>Running with a remote registry server</h3>
+				</a>
+				<p>If you&#39;re working on the administrative interface and want to test local changes against a remote library registry, you can run the administrative interface using the command:</p>
+				<pre><code>npm <span class="hljs-builtin-name">run</span> dev-server -- <span class="hljs-attribute">--env</span>=backend=[url]</code></pre><p>For example, <code>npm run dev-server -- --env=backend=https://registry-tpp-qa.palaceproject.io</code>. The admin UI can then be accessed at <code>http://localhost:8080/admin/</code>.</p>
+				<p>This works by running a local proxy server. HTML pages received from the Library Registry that load assets from the <code>library-registry-admin</code> package on jsdelivr are rewritten to load them from the local webpack build instead.</p>
+				<p>Webpack will take care of compiling and updating any new changes made locally for development. Hot module replacement and live reloading are enabled, so the browser will automatically update as changes are made.</p>
+				<a href="#running-with-a-local-registry-server" id="running-with-a-local-registry-server" style="color: inherit; text-decoration: none;">
+					<h3>Running with a local registry server</h3>
+				</a>
+				<p>If you&#39;re working on the administrative interface and want to test local changes against a local library registry, you can link your local clone of this repository to your local library registry. These steps will allow you to work on the front-end administrative interface and see updates while developing.</p>
 				<ol>
 					<li>Run <code>npm link</code> in this <code>library-registry-admin</code> repository,</li>
 					<li>run <code>npm link library-registry-admin</code> from the <code>library-registry</code> repository,</li>
