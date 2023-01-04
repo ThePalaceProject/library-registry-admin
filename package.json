@@ -17,11 +17,11 @@
     "lint": "tslint -c tslint.json src/*.ts src/*.tsx src/**/*.ts src/**/*.tsx src/**/**/*.ts src/**/**/*.tsx src/**/**/**/*.ts src/**/**/**/*.tsx && sass-lint -c .sass-lint.yml -v -q",
     "test": "npm run lint && tsc && cp -r src/stylesheets lib && mocha --require lib/testHelper.js lib/__tests__/*.js lib/**/__tests__/*.js lib/**/**/__tests__/*.js",
     "test-file": "npm run lint && tsc && cp -r src/stylesheets lib && mocha --require lib/testHelper.js",
-    "dev": "webpack --watch --progress --display-modules --config webpack.dev.config",
+    "dev": "webpack --watch --progress --config webpack.dev.config",
     "dev-server": "webpack serve --progress --hot --config webpack.dev-server.config",
     "dev-test-axe": "TEST_AXE=true npm run dev",
-    "prod": "webpack -p --progress --display-modules --config webpack.prod.config",
-    "build-docs": "node_modules/.bin/typedoc --tsconfig tsconfig.json"
+    "prod": "webpack --progress --config webpack.prod.config",
+    "build-docs": "typedoc --tsconfig tsconfig.json src"
   },
   "dependencies": {
     "@nypl/dgx-svg-icons": "^0.3.13",
@@ -37,13 +37,17 @@
     "react-router-dom": "^5.2.0",
     "recharts": "^1.7.1",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "stream-browserify": "^3.0.0",
+    "timers-browserify": "^2.0.12",
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.6",
     "@types/node": "^12.19.6",
     "@types/prop-types": "^15.7.3",
     "@types/react": "16.9.11",
+    "buffer": "^6.0.3",
     "chai": "^3.5.0",
     "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^6.7.2",
