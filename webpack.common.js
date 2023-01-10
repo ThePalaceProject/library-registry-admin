@@ -26,6 +26,14 @@ var config = {
       "process.env.TEST_AXE": JSON.stringify(process.env.TEST_AXE)
     })
   ],
+  optimization: {
+    minimizer: [new TerserPlugin({
+      terserOptions: {
+        compress: false,
+        sourceMap: true
+      }
+    })]
+  },
   module: {
     rules: [
       {
