@@ -1,10 +1,11 @@
 import * as React from "react";
 import { Store } from "redux";
 import buildStore from "../store";
-import { State } from "../reducers/index";
+import { State } from "../reducers";
 import * as PropTypes from "prop-types";
 
 interface ContextProps {
+  store?: Store<State>;
   username?: string;
 }
 
@@ -16,7 +17,7 @@ export default class ContextProvider extends React.Component<ContextProps, {}> {
 
   constructor(props) {
     super(props);
-    this.store = buildStore();
+    this.store = props.store ?? buildStore();
     this.username = this.props.username;
   }
 

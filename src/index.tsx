@@ -1,5 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import buildStore from "./store";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import ContextProvider from "./components/ContextProvider";
 import App from "./components/App";
@@ -25,12 +27,16 @@ class LibraryRegistryAdmin {
       axe(React, ReactDOM, 1000);
     }
 
+    const store = buildStore();
+
     ReactDOM.render(
-      <ContextProvider {...config}>
+      <Provider store={store}>
+      <ContextProvider {...config} store={store}>
         <BrowserRouter>
           <App imgSrc={config.imgSrc} />
         </BrowserRouter>
-      </ContextProvider>,
+      </ContextProvider>
+      </Provider>,
       document.getElementById("landing-page")
     );
   }
