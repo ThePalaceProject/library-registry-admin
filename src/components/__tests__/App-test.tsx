@@ -8,22 +8,25 @@ import LogInFrom from "../reusables/LogInForm";
 import LibrariesPage from "../LibrariesPage";
 import { MemoryRouter } from "react-router-dom";
 import buildStore from "../../store";
-import ContextProvider from "../ContextProvider";
+import { Provider } from "react-redux";
+import { AppConfigurationProvider } from "../AppConfiguration";
 
 describe("App", () => {
   let wrapper: Enzyme.ShallowWrapper<{}, {}>;
-  let context;
+  let config;
   let store;
 
   beforeEach(() => {
     store = buildStore();
-    context = { store, username: "" };
+    config = { username: "" };
     wrapper = Enzyme.mount(
-      <ContextProvider {...context}>
-        <MemoryRouter initialEntries={["/admin"]}>
-          <App imgSrc="" />
-        </MemoryRouter>
-      </ContextProvider>,
+      <Provider store={store}>
+        <AppConfigurationProvider value={config}>
+          <MemoryRouter initialEntries={["/admin"]}>
+            <App imgSrc="" />
+          </MemoryRouter>
+        </AppConfigurationProvider>
+      </Provider>
     );
   });
   it("should render the header and pass it the correct props", () => {
@@ -42,13 +45,15 @@ describe("App", () => {
   });
 
   it("should render the libraries page component", () => {
-    context = { store, username: "Admin" };
+    config = { username: "Admin" };
     wrapper = Enzyme.mount(
-      <ContextProvider {...context}>
-        <MemoryRouter initialEntries={["/admin"]}>
-          <App imgSrc="" />
-        </MemoryRouter>
-      </ContextProvider>,
+      <Provider store={store}>
+        <AppConfigurationProvider value={config}>
+          <MemoryRouter initialEntries={["/admin"]}>
+            <App imgSrc=""/>
+          </MemoryRouter>
+        </AppConfigurationProvider>
+      </Provider>,
     );
     let librariesPage = wrapper.find(LibrariesPage);
     let logInForm = wrapper.find(LogInFrom);
