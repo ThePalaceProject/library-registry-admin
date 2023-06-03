@@ -4,12 +4,8 @@ import buildStore from "./store";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import ContextProvider from "./components/ContextProvider";
+import { ConfigurationProvider, ConfigurationSettings } from "./components/ConfigurationContext";
 import App from "./components/App";
-
-interface ConfigurationSettings {
-  username?: string;
-  imgSrc?: string;
-}
 
 /** The main admin interface application. Create an instance of this class
     to render the app and set up routing. */
@@ -31,11 +27,13 @@ class LibraryRegistryAdmin {
 
     ReactDOM.render(
       <Provider store={store}>
+      <ConfigurationProvider value={config}>
       <ContextProvider {...config} store={store}>
         <BrowserRouter>
           <App imgSrc={config.imgSrc} />
         </BrowserRouter>
       </ContextProvider>
+      </ConfigurationProvider>
       </Provider>,
       document.getElementById("landing-page")
     );
