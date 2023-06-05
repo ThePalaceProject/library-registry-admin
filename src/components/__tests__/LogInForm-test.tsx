@@ -1,20 +1,24 @@
 import { expect } from "chai";
 import * as Sinon from "sinon";
-import * as Enzyme from "enzyme";
+import {assert} from "chai";
 import * as React from "react";
-import { LogInForm } from "../reusables/LogInForm";
+import LogInForm from "../reusables/LogInForm";
 import { Form } from "library-simplified-reusable-components";
+import { mountWithReduxProvider } from "./testUtils/renderWithReduxProvider";
+import buildStore from "../../store";
 
 describe("LogInForm", () => {
   let wrapper;
+  let reduxProvider;
   let logIn: Sinon.SinonStub;
 
   beforeEach(() => {
     logIn = Sinon.stub();
-    wrapper = Enzyme.mount(
-      <LogInForm logIn={logIn} />
-    );
+    ({ wrapper, provider: reduxProvider } = mountWithReduxProvider(
+      <LogInForm logIn={logIn} />,
+    ));
   });
+
   it("should have the right className", () => {
     expect(wrapper.find("form").hasClass("centered")).to.be.true;
   });
@@ -85,9 +89,8 @@ describe("LogInForm", () => {
     let form = wrapper.find(Form);
     let submit = Sinon.stub();
     let formSubmit = Sinon.stub(form.instance(), "submit").callsFake(submit);
-    wrapper.setProps({ login: submit });
-    wrapper.update();
-    wrapper.find("button").simulate("click");
+    wrapper.setProps({ logIn: submit });
+    form.find("button").simulate("click");
     expect(submit.callCount).to.equal(1);
     formSubmit.restore();
   });
@@ -95,8 +98,8 @@ describe("LogInForm", () => {
     const formData = new (window as any).FormData();
     formData.append("username", "Admin");
     formData.append("password", "12345");
-
-    wrapper.instance().submit(formData);
+    const form = wrapper.find(Form);
+    form.props().onSubmit(formData);
 
     expect(logIn.callCount).to.equal(1);
     expect(logIn.args[0][0]).to.equal(formData);
@@ -106,14 +109,16 @@ describe("LogInForm", () => {
   describe("error handling", () => {
     it("should render a default error message if necessary", () => {
       let form = wrapper.find(Form);
-      let error = wrapper.find(".alert-danger");
-      expect(form.prop("errorText")).to.be.undefined;
+      let error = form.find(".alert-danger");
+      expect(form.prop("errorText")).to.be.null;
       expect(error.length).to.equal(0);
 
-      wrapper.setProps({ error: { status: 401, url: "url" } });
-
+      ({ wrapper, provider: reduxProvider } = mountWithReduxProvider(
+        <LogInForm logIn={logIn} />,
+        { admin: { fetchError: {status: 401, url: "url"} } },
+      ));
       form = wrapper.find(Form);
-      error = wrapper.find(".alert-danger");
+      error = form.find(".alert-danger");
       expect(form.prop("errorText")).to.equal("Invalid credentials");
       expect(error.length).to.equal(1);
       expect(error.text()).to.equal("Invalid credentials");
@@ -121,11 +126,13 @@ describe("LogInForm", () => {
     it("should render a specific error message", () => {
       let form = wrapper.find(Form);
       let error = wrapper.find(".alert-danger");
-      expect(form.prop("errorText")).to.be.undefined;
+      expect(form.prop("errorText")).to.be.null;
       expect(error.length).to.equal(0);
 
-      wrapper.setProps({ error: { status: 401, url: "url", response: "Custom error text!" } });
-
+      ({ wrapper, provider: reduxProvider } = mountWithReduxProvider(
+        <LogInForm logIn={logIn} />,
+        { admin: { fetchError: { status: 401, url: "url", response: "Custom error text!" } } },
+      ));
       form = wrapper.find(Form);
       error = wrapper.find(".alert-danger");
       expect(form.prop("errorText")).to.equal("Custom error text!");

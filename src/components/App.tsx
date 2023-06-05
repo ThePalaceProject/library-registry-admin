@@ -25,7 +25,7 @@ export default (props) => {
           render={() => (
             username ?
               <LibrariesPage store={store} /> :
-              <LogInForm store={store} />
+              <LogInForm />
           )}
         />
       </main>
