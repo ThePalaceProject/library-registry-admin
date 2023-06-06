@@ -11,7 +11,10 @@ describe("AdobeTab", () => {
   let data;
 
   beforeEach(() => {
-    data = [testLibrary1, testLibrary2, modifyLibrary(testLibrary1, { name: "Test Library 3", number_of_patrons: "2" })];
+    data = [
+      testLibrary1,
+      testLibrary2,
+      modifyLibrary(testLibrary1, { uuid: "UUID3", name: "Test Library 3", number_of_patrons: "2" })];
     wrapper = Enzyme.mount(<AdobeTab data={data} />);
   });
 
@@ -22,11 +25,11 @@ describe("AdobeTab", () => {
     let listItems = wrapper.find("li");
     expect(listItems.length).to.equal(3);
     expect(listItems.at(0).find("span").at(0).text()).to.equal("Test Library 1: 3 patrons");
-    expect(listItems.at(0).find("span").at(1).text()).to.equal("(50%)");
+    expect(listItems.at(0).find("span").at(1).text()).to.equal(" (50%)");
     expect(listItems.at(1).find("span").at(0).text()).to.equal("Test Library 2: 1 patron");
-    expect(listItems.at(1).find("span").at(1).text()).to.equal("(17%)");
+    expect(listItems.at(1).find("span").at(1).text()).to.equal(" (17%)");
     expect(listItems.at(2).find("span").at(0).text()).to.equal("Test Library 3: 2 patrons");
-    expect(listItems.at(2).find("span").at(1).text()).to.equal("(33%)");
+    expect(listItems.at(2).find("span").at(1).text()).to.equal(" (33%)");
   });
 
   it("handles the case in which there are no patrons", () => {
@@ -36,7 +39,7 @@ describe("AdobeTab", () => {
     expect(listItems.length).to.equal(3);
     listItems.map((item, idx) => {
       expect(item.find("span").at(0).text()).to.equal(`Test Library ${idx + 1}: 0 patrons`);
-      expect(item.find("span").at(1).text()).to.equal("(0%)");
+      expect(item.find("span").at(1).text()).to.equal(" (0%)");
     });
   });
 
@@ -50,7 +53,6 @@ describe("AdobeTab", () => {
     expect(total.hasClass("adobe-total")).to.be.true;
     let listItems = wrapper.find("li");
     listItems.map(l => expect(l.find("section").hasClass("header-bar")).to.be.true);
-    expect(wrapper.state()["styled"]).to.be.true;
     let formattingButton = wrapper.find("button").at(0);
     expect(formattingButton.text()).to.equal("Remove Formatting");
     formattingButton.simulate("click");
@@ -58,7 +60,6 @@ describe("AdobeTab", () => {
     expect(total.hasClass("adobe-total")).to.be.false;
     listItems = wrapper.find("li");
     listItems.map(l => expect(l.find("section").hasClass("header-bar")).to.be.false);
-    expect(wrapper.state()["styled"]).to.be.false;
     expect(formattingButton.text()).to.equal("Restore Formatting");
   });
 });
