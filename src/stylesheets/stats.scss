@@ -58,7 +58,7 @@
   }
 
   .adobe-data, .yearly-data, .monthly-data {
-    > ul, .disable-events {
+    > ul, > div > ul, .disable-events {
       pointer-events: none;
       margin: 0;
       padding: 10px 0;

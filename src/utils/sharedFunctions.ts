@@ -1,3 +1,4 @@
+import {useEffect, useRef, useState} from "react";
 import { LibraryData } from "../interfaces";
 
 export const months = [
@@ -54,3 +55,17 @@ export function findYear(date: string, resultText?: string, backupText?: string)
 export function hasLibraries(data: {[key: string]: LibraryData[]}): boolean {
   return Object.values(data).some(x => x?.length > 0);
 }
+
+/**
+ * Creates an element ref and, on mount, captures its current value as state for future reference.
+ * */
+export const useElementWithRef = () => {
+  const [element, setElement] = useState();
+  const elementRef = useRef();
+
+  useEffect(() => {
+    setElement(elementRef.current);
+  }, []);
+
+  return {elementRef, element};
+};
