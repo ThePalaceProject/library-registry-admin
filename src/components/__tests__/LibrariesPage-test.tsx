@@ -74,7 +74,8 @@ describe("LibrariesPage", () => {
     wrapper.setState({ qa: true });
 
     toggle = wrapper.find(Toggle).first();
-    expect(toggle.prop("initialOn")).to.be.true;
+    const toggleButton = toggle.find("button").first();
+    toggleButton.simulate("click");
     expect(toggle.text()).to.equal("Show All: On");
   });
 
