@@ -7,17 +7,15 @@ export interface FieldsetProps {
   badgeText?: string;
 }
 
-export default class Fieldset extends React.Component<FieldsetProps, {}> {
-  render(): JSX.Element {
-    return(
+export default (props: FieldsetProps) => {
+      return(
       <fieldset className="form-group well">
-        <legend>{this.props.legend}</legend>
-        {this.props.elements}
+        <legend>{props.legend}</legend>
+        {props.elements}
         {
-          this.props.badgeText &&
-          <span className={`badge badge-${this.props.badgeClass || "default"}`}>{this.props.badgeText}</span>
+          props.badgeText &&
+          <span className={`badge badge-${props.badgeClass || "default"}`}>{props.badgeText}</span>
         }
       </fieldset>
     );
-  }
-}
+};
