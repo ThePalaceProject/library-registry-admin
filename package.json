@@ -3,7 +3,7 @@
   "description": "Admin Interface for The Palace Project Library Registry",
   "repository": {
     "type": "git",
-    "url": "https://github.com/thepalaceproject/library-registry-admin.git"
+    "url": "https://github.com/ThePalaceProject/library-registry-admin.git"
   },
   "main": "dist/library-registry-admin.js",
   "author": "The Palace Project",
